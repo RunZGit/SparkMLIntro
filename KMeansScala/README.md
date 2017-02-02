@@ -1,13 +1,13 @@
 # Spark Machine Learning with Scala
 
 ## Table Of Contents:
-  1. [Example](#example)
+  1. [Example](#example)  
     a. [Required Imports](#required-imports)  
-    b. [Loading Data](#loading-data)
-    c. [RDD Conversion](#rdd-conversion)
-    d. [Performing KMeans Clustering](#performing-kmeans-clustering)
-    e. [Prediction Data](#prediction-data)
-    f. [Results](#results)
+    b. [Loading Data](#loading-data)  
+    c. [RDD Conversion](#rdd-conversion)  
+    d. [Performing KMeans Clustering](#performing-kmeans-clustering)  
+    e. [Prediction Data](#prediction-data)  
+    f. [Results](#results)  
 
 ## Example
 ### Required Imports
