@@ -8,4 +8,4 @@ This repository contains a lab written in both Scala and Python. This lab will i
 
 ## Getting Started 
   - [Scala Lab](https://github.com/RunZGit/SparkMLIntro/tree/master/KMeansScala)
-  - Python Lab [WIP]
+  - [Python Lab](https://github.com/RunZGit/SparkMLIntro/tree/master/KMeansPyspark)
