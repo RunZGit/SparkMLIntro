@@ -1,11 +1,11 @@
 # Spark Machine Learning Introduction:
 ## Table Of Contents:
-  1. [Objective](#Objective) 
-  2. [What is Spark?](#What-is-Spark?)
-  3. [Who and What is Spark Used For?](#Who-and-What-is-Spark-Used-For?)
-  4. [Spark MLlib](#Spark-MLlib)
-  5. [KMeans](#KMeans)
-  6. [Get Started](#Getting-Started)
+  1. [Objective](#objective) 
+  2. [What is Spark?](#what-is-spark?)
+  3. [Who and What is Spark Used For?](#who-and-what-is-spark-wsed-for?)
+  4. [Spark MLlib](#spark-mLlib)
+  5. [KMeans](#kmeans)
+  6. [Get Started](#getting-started)
 
 ## Objective
 From this introduction, a student should be able to do simple clustering with quantitative data using spark.
