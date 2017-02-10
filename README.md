@@ -6,6 +6,7 @@
   4. [Spark MLlib](#spark-mLlib)
   5. [KMeans](#kmeans)
   6. [Get Started](#getting-started)
+  7. [More on Spark MapReduce](#more-on-spark-mapreduce)
 
 ## Objective
 From this introduction, a student should be able to do simple clustering with quantitative data using spark.
@@ -51,7 +52,7 @@ Spark MLlib is the machine learning package of spark. The package has numerous a
 - K-Means
 - Decision trees
 - Ensembles of trees(Random Forests and Gradient-Boosted Trees)
-- and many more
+- and many more   
 You can view more about these [here](https://spark.apache.org/docs/latest/mllib-guide.html).
 
 ## KMeans
@@ -60,3 +61,6 @@ K-Means clustering is a very popular ML algorithm in [unsupervised learning](htt
 ## Getting Started 
   - [Scala Lab](https://github.com/RunZGit/SparkMLIntro/tree/master/KMeansScala)
   - [Python Lab](https://github.com/RunZGit/SparkMLIntro/tree/master/KMeansPyspark)
+  
+## More on Spark MapReduce
+  - [SparkMapReduceLab](https://github.com/lamdaV/SparkMapReduceLab)
