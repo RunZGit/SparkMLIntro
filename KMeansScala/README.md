@@ -5,7 +5,7 @@
   1. [Objective](#Objective) 
   2. [Requirements](#Requirements)  
   3. [Installation](#Installation)
-  8. [Example](#Example)  
+  4. [Example](#Example)  
     a. [Required Imports](#required-imports)  
     b. [Loading Data](#loading-data)  
     c. [Extract the features from dataset using PCA](#extract-the-features-from-dataset-using-pca)
@@ -20,6 +20,7 @@
 ## Requirements
 - Hadoop Cluster with Spark and scala installed
 - Basic Knowledge of Programming
+- Zepplein notebook
 
 ## Installation
 Spark is preinstalled with the standard hadoop clusters. To check if spark is installed on your machine execute the following command:
@@ -27,11 +28,12 @@ Spark is preinstalled with the standard hadoop clusters. To check if spark is in
 spark-shell
 ```
 If spark and/or scala are not installed on your machine, [click this](https://www.tutorialspoint.com/apache_spark/apache_spark_installation.htm) and follow the steps to install spark and/or scala.
-
+If your zeppelin is not enabled, you can enable it by following [this link](http://hortonworks.com/hadoop-tutorial/apache-zeppelin-hdp-2-4/)
+Then go to your cluster port: 9995 to access zeppelin.
 
 ## Example
 ### Required Imports
-```scala
+```dep
  %dep
 
 // IMPORTANT! 
@@ -41,7 +43,9 @@ If spark and/or scala are not installed on your machine, [click this](https://ww
 
 z.reset()
 z.load("com.databricks:spark-csv_2.11:1.4.0")   // Spark CSV package
-
+```
+Make sure this two imports are called seperately
+```scala
 import org.apache.spark.ml.feature.PCA
 import org.apache.spark.mllib.linalg.Vectors
 import org.apache.spark.ml.feature.VectorAssembler
