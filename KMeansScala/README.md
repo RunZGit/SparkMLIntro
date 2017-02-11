@@ -11,9 +11,9 @@
     d. [RDD Conversion](#rdd-conversion)   
     e. [Performing KMeans Clustering](#performing-kmeans-clustering)  
     f. [Prediction Data](#prediction-data)  
-    g. [Results](#results)
-   5.[Task1](https://github.com/RunZGit/SparkMLIntro/tree/master/KMeansScala/IrisProblem)
-   6.[Task2](https://github.com/RunZGit/SparkMLIntro/tree/master/KMeansScala/CrimeProblem)
+    g. [Results](#results)   
+   5.[Task1](https://github.com/RunZGit/SparkMLIntro/tree/master/KMeansScala/IrisProblem)   
+   6.[Task2](https://github.com/RunZGit/SparkMLIntro/tree/master/KMeansScala/CrimeProblem)  
     
 ## Objective
   - Clustering the Iris dataset
