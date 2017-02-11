@@ -12,7 +12,9 @@
     d. [RDD Conversion](#rdd-conversion)   
     e. [Performing KMeans Clustering](#performing-kmeans-clustering)  
     f. [Prediction Data](#prediction-data)  
-    g. [Results](#results)  
+    g. [Results](#results) 
+   5. [Task1](kmeans-on-crime(yask1)
+   6. [Task2](kmeans-on-stock-price(task2))
     
 ## Objective
   - Clustering the Iris dataset
@@ -63,6 +65,7 @@ val df = sqlContext.read
 ```
 
 ### Extract the features from dataset using PCA
+Sometimes, data scientists uses principal components analysis(PCA) to reduce the dimentionality of the data. This allows us to visulize the data. This lab will only show how to find the points of PCAs, it is up to you if you want to figure out how to print the data.
 ```scala
 val assembler = new VectorAssembler()
   .setInputCols(Array("sepal length", "sepal width", "petal length", "petal width"))
@@ -116,3 +119,6 @@ val predDF = predictions.toDF("index", "CLUSTER")
   t.filter("CLUSTER = 1").show(100)
   t.filter("CLUSTER = 2").show(100)
 ```
+## Kmeans on Crime(Task1)
+
+## Kmeans on Stock Price(Task2)
