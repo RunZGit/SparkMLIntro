@@ -5,7 +5,7 @@
   1. [Objective](#Objective) 
   2. [Requirements](#Requirements)  
   3. [Installation](#Installation)
-  8. [Example](#Example)
+  8. [Example](#Example)  
     a. [Required Imports](#required-imports)  
     b. [Loading Data](#loading-data)  
     c. [Extract the features from dataset using PCA](#extract-the-features-from-dataset-using-pca)
