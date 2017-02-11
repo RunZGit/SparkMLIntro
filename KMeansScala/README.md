@@ -24,16 +24,8 @@
 ## Installation
 Spark is preinstalled with the standard hadoop clusters. To check if spark is installed on your machine execute the following command:
 ```bash
-spark-shellversion
+spark-shell
 ```
-If there is an error or no output then spark is not installed.
-
-To check if scala is installed on your machine, execute the following command:
-```bash
-scala-version
-```
-
-If there is an error or no output then scala is not installed.
 If spark and/or scala are not installed on your machine, [click this](https://www.tutorialspoint.com/apache_spark/apache_spark_installation.htm) and follow the steps to install spark and/or scala.
 
 
