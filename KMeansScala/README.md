@@ -1,4 +1,3 @@
-
 # Spark Machine Learning with Scala
 
 ## Table Of Contents:
