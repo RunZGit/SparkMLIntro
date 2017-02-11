@@ -13,7 +13,7 @@
     e. [Performing KMeans Clustering](#performing-kmeans-clustering)  
     f. [Prediction Data](#prediction-data)  
     g. [Results](#results) 
-  5. [Task1](#kmeans-on-crimetask1)  
+  5. [Task1](https://github.com/RunZGit/SparkMLIntro/blob/master/KMeansScala/README.md#kmeans-on-crimetask1)  
   6. [Task2](#kmeans-on-stock-pricetask2)  
     
 ## Objective
