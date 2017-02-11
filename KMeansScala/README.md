@@ -13,8 +13,8 @@
     e. [Performing KMeans Clustering](#performing-kmeans-clustering)  
     f. [Prediction Data](#prediction-data)  
     g. [Results](#results) 
-  5. [Task1](#kmeans-on-crimeyask1)  
-  6. [Task2](#kmeans-on-stock-pricetask2)
+  5. [Task1](#kmeans-on-crimetask1)  
+  6. [Task2](#kmeans-on-stock-pricetask2)  
     
 ## Objective
   - Clustering the Iris dataset
@@ -119,6 +119,9 @@ val predDF = predictions.toDF("index", "CLUSTER")
   t.filter("CLUSTER = 1").show(100)
   t.filter("CLUSTER = 2").show(100)
 ```
-## Kmeans on Crime(Task1)
+## Kmeans on Crime(Task1)   
+You are given the crimes committed of 50 US states in 1973 per 100,000 residents. The data contains the murder, assault, and rape rate as well as urbanpopulation.
+
+Your task is to cluster the cities into 4 clusters based on the crime rate, a sample clustring result is in the data for you to compare your clustering output. Instead training for an arbitary amount of iterations, you need to find the local minimium of the k centers. To achieve this, calclulate the euclidean distance from the previous k center and current center, if the distance is zero, that means the cluster reached a local minimum. Then print out the result of the cluster centers as well as the prediction.
 
 ## Kmeans on Stock Price(Task2)
