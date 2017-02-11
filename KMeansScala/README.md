@@ -13,8 +13,10 @@
     e. [Performing KMeans Clustering](#performing-kmeans-clustering)  
     f. [Prediction Data](#prediction-data)  
     g. [Results](#results)  
+    
 ## Objective
   - Clustering the Iris dataset
+  
 ## Requirements
 - Hadoop Cluster with Spark and scala installed
 - Basic Knowledge of Programming
