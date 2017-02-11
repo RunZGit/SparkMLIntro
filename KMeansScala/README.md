@@ -59,22 +59,22 @@ val df = sqlContext.read
     .format("com.databricks.spark.csv")
     .option("header", "true")       // Use first line of all files as header
     .option("inferSchema", "true")  // Automatically infer data types
-    .load("Iris-cleaned.csv") // Read all Iris data
+    .load("Data.csv") // Read all Iris data
 ```
 
 ### Extract the features from dataset using PCA
 Sometimes, data scientists uses principal components analysis(PCA) to reduce the dimentionality of the data. This allows us to visulize the data. This lab will only show how to find the points of PCAs, it is up to you if you want to figure out how to print the data.
 ```scala
 val assembler = new VectorAssembler()
-  .setInputCols(Array("sepal length", "sepal width", "petal length", "petal width"))
+  .setInputCols(Array("column name",....,"column name"))
   .setOutputCol("features")
 
-val feature_vector = assembler.transform(df.select("sepal length", "sepal width", "petal length", "petal width"))
+val feature_vector = assembler.transform(df.select("column name",....,"column name"))
 
 val pca = new PCA()
   .setInputCol("features")
   .setOutputCol("pcaFeatures")
-  .setK(2)
+  .setK(10) //number of principle components
   .fit(output)
   
 val pcaDF = pca.transform(output)
@@ -85,17 +85,17 @@ result.show(false)
 ### RDD Conversion
 We are converting the DataFrame to RDD rows so we can feed the data into the KMean classifier.
 ```scala
-val rowsRDD = df.rdd.map(r => (r.getInt(0), r.getDouble(1), r.getDouble(2),
-    r.getDouble(3), r.getDouble(4), r.getString(5)))
-val vectors = df.rdd.map(r => Vectors.dense( r.getDouble(1), r.getDouble(2),
-    r.getDouble(3), r.getDouble(4)))
+//Converting the entrie data to RDD
+val rowsRDD = df.rdd.map(r => (r.getInt(0), r.getDouble(1), ....., r.getString(n)))
+//Converting the features that are used for the input of KMean
+val vectors = df.rdd.map(r => Vectors.dense( r.getDouble(1), ....., r.getDouble(n)))
 ```
 
 ### Performing KMeans Clustering
 This step is rather simple, in order to trian the classifier, all you need to do is to instruct it how many clusters and how many iterations there are.
 ```scala
-  // 3 clusters, and 100 iterations
-  val kMeansModel = KMeans.train(vectors, 3, 100)
+  // n clusters, and x iterations
+  val kMeansModel = KMeans.train(vectors, n, x)
 ```
 To see the center of each clusters:
 ```scala
