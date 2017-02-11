@@ -53,7 +53,7 @@ import org.apache.spark.mllib.clustering.KMeans
 ```
 
 ### Loading Data
-Note, the data needs to be stored on HDFS. "Iris-cleaned.csv" is provided in this repository.
+Note, the data needs to be stored on HDFS /user/zeppelin directory. "Iris-cleaned.csv" is provided in this repository.
 ```scala
 val df = sqlContext.read
     .format("com.databricks.spark.csv")
