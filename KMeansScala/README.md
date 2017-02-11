@@ -44,7 +44,7 @@ Then go to your cluster port: 9995 to access zeppelin.
 z.reset()
 z.load("com.databricks:spark-csv_2.11:1.4.0")   // Spark CSV package
 ```
-Make sure this two imports are called seperately
+Make sure this two blocks of imports are called seperately, since they are in different programing languages
 ```scala
 import org.apache.spark.ml.feature.PCA
 import org.apache.spark.mllib.linalg.Vectors
