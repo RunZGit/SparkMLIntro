@@ -53,7 +53,7 @@ Spark MLlib is the machine learning package of spark. The package has numerous a
 - Decision trees
 - Ensembles of trees(Random Forests and Gradient-Boosted Trees)
 - and many more   
-You can view more about these [here](https://spark.apache.org/docs/latest/mllib-guide.html).
+You can view more about these [here](https://spark.apache.org/docs/latest/mllib-guide.html). Now there are other python package, like tensor flow and scikit-learn, that have their own build in machine learning algorithms, but spark is able to communicate with hadoop and make parts of the process faster using the dfs.
 
 ## KMeans
 K-Means clustering is a very popular ML algorithm in [unsupervised learning](https://www.mathworks.com/discovery/unsupervised-learning.html). It is able to group similar data into k groups. The algorithm initially create k random points in the hyperspace. Then each point is clustered based on which cluster center is the closest to the point by the euclidean distance metric. You can then choose the midpoint of each of those clusters and repeat the process again using those new points. This is done until you a specified termination criteria. The result will return a local minimum of the points clustring.

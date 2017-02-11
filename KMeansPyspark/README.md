@@ -1,86 +1,66 @@
-# Spark Machine Learning with Scala
+# Spark Machine Learning with Pyspark
 
 ## Table Of Contents:
   1. [Objective](#objective)
-  2. [Example](#example)  
+  2. [Requirements](#requirements)
+  3. [Installation](#installation)
+  4. [Example](#example)  
     a. [Required Imports](#required-imports)  
     b. [Loading Data](#loading-data)  
     c. [RDD Conversion](#rdd-conversion)  
     d. [Performing KMeans Clustering](#performing-kmeans-clustering)  
     e. [Prediction Data](#prediction-data)  
+    f. [Real Data](#real-data)
     f. [Results](#results)  
+  5. [Tasks](#tasks)
 
 ## Objective
-From this introduction, a student should be able to do simple clustering with quantitative data using scala.
+From this introduction, a student should be able to do simple clustering with quantitative data using pyspark.
 
 ## Requirements
-- Hadoop Cluster with Spark and scala installed
+- Hadoop Cluster with pyspark installed
 - Basic Knowledge of Programming
 
 ## Installation
-Spark is preinstalled with the standard hadoop clusters. To check if spark is installed on your machine execute the following command:
-```bash
-spark-shellversion
+PySpark comes standard with most Spark installation. If you have Ambari installed, both Spark and Spark2 can be installed via the Ambari Web UI.
+
+Otherwise, please ensure that Java 7+ is installed. To check if Java is installed, run the following command:
 ```
-If there is an error or no output then spark is not installed.
+  $ java -version
+```
+If the command does not run, then Java is not installed. If the version outputted is not `1.7` or above, then please upgrade your Java version.
 
-To check if scala is installed on your machine, execute the following command:
-```bash
-scala-version
+We are now ready to install Spark. Download Spark [here](https://spark.apache.org/downloads.html) and extract the Spark tar file with the following command:
+```
+  $ tar xvf <spark.tar>
 ```
 
-If there is an error or no output then scala is not installed.
-If spark and/or scala are not installed on your machine, [click this](https://www.tutorialspoint.com/apache_spark/apache_spark_installation.htm) and follow the steps to install spark and/or scala.
+It is suggested that you move the Spark files from your downloads to some standard directory such as `/usr/local/spark`. You can do so by running the following command:
+```
+  cd <spark_download_location>
+  mv <spark_binary> /usr/local/spark
+```
 
-## What is Spark?
-On the Apache Spark homepage, Spark claims to be 100x faster than standard Hadoop than MapReduce when performing in-memory computations and 10x faster than Hadoop when performing on-disk computations.
+Now we need to update the `~/.bashrc` file by adding the path the Spark binary location. To do so, run the following command:
+```
+  export PATH = $PATH:/usr/local/spark/bin
+```
 
-What does this mean? Spark, much like MapReduce, works by distrubuting data across a cluster and processes it parallel; however, unlike your standard MapReduce, most of the data processing occurs in-memory rather than on-disk.
+Spark should now be installed. To verify the installation, run the command `pyspark`. You should get a Python REPL with Spark integration.
 
-To achieve this, Spark internally maintains what is called Resilient Distributed Datasets (RDDs) which are read-only data stored on a cluster. The RDDs are stored on the cluster in a fault-tolerant. This new data structure was developed to overcome the MapReduce linear dataflow. That is, a typical MapReduce program will read data from disk, run the Map Phase, run the Reduce Phase, and store the Reduced results on disk. [More Information](https://www.usenix.org/system/files/conference/nsdi12/nsdi12-final138.pdf)
+Installation Adapted from [TutorialPoint](https://www.tutorialspoint.com/apache_spark/apache_spark_installation.htm)
 
-Spark natively supports Java, Scala, Python, and R. Unlike Hadoop, Spark does not rely on a Streaming API to work with languages other than Java. Furthermore, Spark supports interactive shells for Scala, Python, and R.
-
-Similar to Hadoop, many powerful libraries utilizes Spark's computation engine to perform data analytics. These libraries include Spark SQL, Spark Streaming, MLlib (Machine Learning Library), and GraphX (Graphing Libarary).
-
-Lastly, Spark supports many different distributive computing setups such as Hadoop, HDFS, Cassandra, HBase, and Mesos.
-
-## Who and What is Spark Used For?
-  - [eBay](https://spark.apache.org/powered-by.html)
-    - Spark Core for transaction logging, aggregation, and analytics
-  - [VideoAmp](https://spark.apache.org/powered-by.html)
-    - Intelligent video ads targetting specific online and television viewers
-  - [MyFitnessPal](https://spark.apache.org/powered-by.html)
-    - Clean-up user specified food data to identify high-quality food items
-    - Recommendation engine for recipes and foods.
-  - [IBM](http://www.ibmbigdatahub.com/blog/what-spark)
-    - IBM SPSS: Spark MLlib algorithms are invoked from IBM SPSS Modeler workflows
-    - IBM BigSQL: Spark is used to access data from HDFS, S3, HBase, and other NoSQL databases using IBM BigSQL. Spark RDD is returned to IBM BigSQL for processing.
-    - IBM InfoSphere Streams: Spark transformation, action, and MLlib functions can be added to existing Stream application for improved data analytics.
-    - IBM Cloudant: Spark analyzes data collected on IBM Bluemix.
-  - [Uber](https://www.qubole.com/blog/big-data/apache-spark-use-cases/)
-    - Spark is used with Kafka and HDFS in a continuous Extract, Transform, Load pipeline. Uber terabytes of raw userdata into structured data to perform more complicated analytics.
-  - [Pinterest](https://www.qubole.com/blog/big-data/apache-spark-use-cases/)
-    - Spark Streaming is leverage to perform real-time analytics on how users are engaging with Pins. This allows Pinterest to make relevant information navigating the site.
-  - [Yahoo](https://www.datanami.com/2014/03/06/apache_spark_3_real-world_use_cases/)
-    - Spark MLlib is used to customize Yahoo's homepage news feed for each user.
-    - Spark is also used with Hive to allow Yahoo to query advertisement user data for analytics.
-
-## Spark MLlib
-Spark MLlib is the machine learning package of spark. The package has numerous algorithms built in including:
-- logistic regression
-- SVMs
-- k-mean
-- decision trees
-- ensembles of trees(Random Forests and Gradient-Boosted Trees)
-- and many more
-You can view more about these [here](https://spark.apache.org/docs/latest/mllib-guide.html).
-
-## KMeans
-K-Means clustering is a very popular ML algorithm in [unsupervised learning](https://www.mathworks.com/discovery/unsupervised-learning.html). It is able to group similar data into k groups. The algorithm initially create k random points in the hyperspace. Then each point is clustered based on which cluster center is the closest to the point by the euclidean distance metric. You can then choose the midpoint of each of those clusters and repeat the process again using those new points. This is done until you a specified termination criteria. The result will return a local minimum of the points clustring.
-
-## Background
-
+## Example
+Here is an example of perfoming KMeans clustering with pyspark on a small dataset of datapoints
+```
+1,1,0
+2,2,0
+3,2,0
+4,1,0
+10,1,1
+11,11,1
+```
+The first two columns are the x-y coordinates while the thrid column is the classification.
 ### Required Imports
 In order to perform Kmeans with spark you need to use the following imports:
 ```python
@@ -98,32 +78,36 @@ Here we are loading the data to analyze. Notice that it needs to be located on H
 ```
 
 ### RDD Conversion
-Now we are taking the inputfile and parsing the data out of it line by line. You can define a lambda inline like this or define a local function.
+Now we are taking the inputfile and parsing the data out of it line by line. You can define a define a local function like this or use a lambda function.
 ```python
-  parsedData = data.map(lambda line: array([float(x) for x in line.split(',')]))
+  def mapper(line):
+    mline = line.split(",")
+    return (int(mline[0]),int(mline[1]))
+  
+  parsedData = data.map(mapper)
 ```
 
 ### Performing KMeans Clustering
-This step is rather simple. Here we are specifying that we want to train a KMeans algorithm on the parsedData with 3 clusters and a max of 10 iterations.
+This step is rather simple. Here we are specifying that we want to train a KMeans algorithm on the parsedData with 2 clusters, since we have two classes to classify to, and a max of 10 iterations.
 ```python
-  // 3 clusters, and 10 iterations
-  clusters = KMeans.train(parsedData, 3, maxIterations=10, initializationMode="random")
+  // 2 clusters, and 10 iterations
+  clusters = KMeans.train(parsedData, 2, maxIterations=10, initializationMode="random")
 ```
 
 ### Prediction Data
-Here is how you can define a mapper to parse a file:
-```python
-  def realMapper(line):
-    mline = line.split(",")
-    return mline[4].encode("utf-8")
-  # use the mapper to get the data
-  real = data2.map(realMapper).collect()
-```
-Lets say real is the correct clustering of the data. 
-Now, to get the prediction of the data from your KMeans algorithm. This is how you do it:
+Now we are going to get the prediction of our original data from the KMeans model we just created:
 ```python
   rdd = clusters.predict(parsedData)
   pred = rdd.collect()
+``` 
+
+### Real Data
+Lets get the real cluster labels from our data set:
+```python
+  def realMapper(line):
+    mline = line.split(",")
+    return int(mline[3])
+  real = data.map(realMapper).collect()
 ```
 
 ### Results
@@ -136,3 +120,26 @@ Now you can create a numpy array of prediction vs real data and print it like th
 
   print data
 ```
+here are two example outputs:
+```
+0,0
+0,0
+0,0
+0,0
+1,1
+1,1
+```
+
+```
+0,1
+0,1
+0,1
+0,1
+1,0
+1,0
+```
+As you can see the outputs are different. This is because the Kmeans model chooses how to label the clusters, so they could be different from what you choose to be your labels.
+
+## Tasks
+1. [Iris Task](https://github.com/RunZGit/SparkMLIntro/tree/master/KMeansPyspark/IrisData)
+2. [Stock Data Task](https://github.com/RunZGit/SparkMLIntro/tree/master/KMeansPyspark/StockProblem)
