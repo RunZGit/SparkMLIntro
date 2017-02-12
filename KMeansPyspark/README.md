@@ -4,15 +4,15 @@
   1. [Objective](#objective)
   2. [Requirements](#requirements)
   3. [Installation](#installation)
-  4. [Example](#example)  
-    a. [Required Imports](#required-imports)  
+  4. [Example](#example)   
+    a. [Required Imports](#required-imports)    
     b. [Loading Data](#loading-data)  
     c. [RDD Conversion](#rdd-conversion)  
     d. [Performing KMeans Clustering](#performing-kmeans-clustering)  
     e. [Prediction Data](#prediction-data)  
-    f. [Real Data](#real-data)
-    f. [Results](#results)  
-  5. [Tasks](#tasks)
+    f. [Real Data](#real-data)  
+    f. [Results](#results)    
+  5. [Tasks](#tasks)  
 
 ## Objective
 From this introduction, a student should be able to do simple clustering with quantitative data using pyspark.
@@ -51,7 +51,7 @@ Spark should now be installed. To verify the installation, run the command `pysp
 Installation Adapted from [TutorialPoint](https://www.tutorialspoint.com/apache_spark/apache_spark_installation.htm)
 
 ## Example
-Here is an example of perfoming KMeans clustering with pyspark on a small dataset of datapoints
+Here is an example of perfoming KMeans clustering with pyspark on a small dataset of datapoints:
 ```
 1,1,0
 2,2,0
@@ -60,16 +60,16 @@ Here is an example of perfoming KMeans clustering with pyspark on a small datase
 10,1,1
 11,11,1
 ```
-The first two columns are the x-y coordinates while the thrid column is the classification.
+The first two columns are the x-y coordinates while the third column is the classification.
 ### Required Imports
-In order to perform Kmeans with spark you need to use the following imports:
+In order to perform Kmeans with Spark you need to use the following imports:
 ```python
   from pyspark.mllib.clustering import KMeans, KMeansModel
   from numpy import array
   import random
   import numpy as np
 ```
-Numpy is a python package which gives helpful tools to create and manipulate arrays. KMeans and KMeansModel are packages from Pyspark machine learning
+Numpy is a python package which gives helpful tools to create and manipulate arrays. KMeans and KMeansModel are packages from Pyspark machine learning.
 
 ### Loading Data
 Here we are loading the data to analyze. Notice that it needs to be located on HDFS.
@@ -85,10 +85,14 @@ Now we are taking the inputfile and parsing the data out of it line by line. You
     return (int(mline[0]),int(mline[1]))
   
   parsedData = data.map(mapper)
+  
+  # or 
+  
+  parsedDate = data.map(lambda line: tuple(line.split(",")[0:2])
 ```
 
 ### Performing KMeans Clustering
-This step is rather simple. Here we are specifying that we want to train a KMeans algorithm on the parsedData with 2 clusters, since we have two classes to classify to, and a max of 10 iterations.
+This step is rather simple. Here we are specifying that we want to train a KMeans algorithm on the parsedData with 2 clusters, since we have two classes to classify, and a max of 10 iterations.
 ```python
   // 2 clusters, and 10 iterations
   clusters = KMeans.train(parsedData, 2, maxIterations=10, initializationMode="random")
