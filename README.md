@@ -46,17 +46,17 @@ Lastly, Spark supports many different distributive computing setups such as Hado
     - Spark is also used with Hive to allow Yahoo to query advertisement user data for analytics.
 
 ## Spark MLlib
-Spark MLlib is the machine learning package of spark. The package has numerous algorithms built in including:
-- logistic regression
-- SVMs
-- K-Means
-- Decision trees
-- Ensembles of trees(Random Forests and Gradient-Boosted Trees)
-- and many more   
-You can view more about these [here](https://spark.apache.org/docs/latest/mllib-guide.html). Now there are other python package, like tensor flow and scikit-learn, that have their own build in machine learning algorithms, but spark is able to communicate with hadoop and make parts of the process faster using the dfs.
+Spark MLlib is the machine learning package of Spark. The package has numerous algorithms built-in including:
+- Logistic Regression
+- SVM
+- K-Mean
+- Decision Tree
+- Ensembles of Trees (Random Forests and Gradient-Boosted Trees)
+- and many [more](https://spark.apache.org/docs/latest/mllib-guide.html)   
+Now there are other python package, like tensor flow and scikit-learn, that have their own built-in machine learning algorithms, but spark is able to communicate with hadoop and make parts of the process faster using the dfs.
 
 ## KMeans
-K-Means clustering is a very popular ML algorithm in [unsupervised learning](https://www.mathworks.com/discovery/unsupervised-learning.html). It is able to group similar data into k groups. The algorithm initially create k random points in the hyperspace. Then each point is clustered based on which cluster center is the closest to the point by the euclidean distance metric. You can then choose the midpoint of each of those clusters and repeat the process again using those new points. This is done until you a specified termination criteria. The result will return a local minimum of the points clustring.
+K-Means clustering is a very popular [unsupervised machine learning](https://www.mathworks.com/discovery/unsupervised-learning.html) algorithm. It is able to group similar data into `k` groups. The algorithm initially create `k` random points in the hyperspace. Then each point is clustered based on which cluster center is the closest to the point by some distance metric such as the Euclidean Distance. You can then choose the midpoint of each of those clusters and repeat the process again. This is done until you a have met a specified termination criteria. The result will return a local minimum of the points clustering.
 
 ## Getting Started 
   - [Scala Lab](https://github.com/RunZGit/SparkMLIntro/tree/master/KMeansScala)
