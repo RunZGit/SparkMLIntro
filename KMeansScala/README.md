@@ -28,9 +28,9 @@ Spark is preinstalled with the standard hadoop clusters. To check if spark is in
 ```bash
 spark-shell
 ```
-If spark and/or scala are not installed on your machine, [click this](https://www.tutorialspoint.com/apache_spark/apache_spark_installation.htm) and follow the steps to install spark and/or scala.
-If your zeppelin is not enabled, you can enable it by following [this link](http://hortonworks.com/hadoop-tutorial/apache-zeppelin-hdp-2-4/)
-Then go to your cluster port: 9995 to access zeppelin.
+If Spark and/or Scala are not installed on your machine, [click this](https://www.tutorialspoint.com/apache_spark/apache_spark_installation.htm) and follow the steps to install Spark and/or Scala.
+If your Zeppelin is not enabled, you can enable it by following [this link](http://hortonworks.com/hadoop-tutorial/apache-zeppelin-hdp-2-4/)
+Then go to your cluster port: 9995 to access Zeppelin.
 
 ## Example
 ### Required Imports
@@ -60,7 +60,7 @@ val df = sqlContext.read
     .format("com.databricks.spark.csv")
     .option("header", "true")       // Use first line of all files as header
     .option("inferSchema", "true")  // Automatically infer data types
-    .load("Data.csv") // Read all Iris data
+    .load("Data.csv")               // Read all Iris data
 ```
 
 ### Extract the features from dataset using PCA
